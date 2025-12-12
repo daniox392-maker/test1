@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* FURIOZA Green-Black Theme */
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Vibrant Green Primary */
+    --primary: 142 76% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Dark Steel Secondary */
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 90%;
+
+    /* Muted Coal */
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
+
+    /* Emerald Accent */
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 85% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 12%;
+    --ring: 142 76% 45%;
+
+    --radius: 0.5rem;
+
+    /* Custom FURIOZA Green Colors */
+    --green-primary: 142 76% 45%;
+    --green-light: 142 70% 55%;
+    --green-dark: 142 80% 30%;
+    --emerald: 160 84% 39%;
+    --coal: 0 0% 5%;
+    --steel: 0 0% 18%;
+    --ash: 0 0% 45%;
+
+    /* Gradients */
+    --gradient-green: linear-gradient(135deg, hsl(var(--green-light)) 0%, hsl(var(--green-primary)) 50%, hsl(var(--green-dark)) 100%);
+    --gradient-emerald: linear-gradient(180deg, hsl(var(--emerald)) 0%, hsl(var(--coal)) 100%);
+    --gradient-steel: linear-gradient(180deg, hsl(0 0% 12%) 0%, hsl(0 0% 5%) 100%);
+
+    /* Shadows */
+    --shadow-green: 0 0 30px hsl(var(--green-primary) / 0.4);
+    --shadow-emerald: 0 4px 20px hsl(var(--emerald) / 0.3);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 142 76% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 142 76% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  /* Green text effect */
+  .text-flame {
+    background: linear-gradient(135deg, hsl(142 70% 60%) 0%, hsl(142 76% 45%) 50%, hsl(160 84% 39%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px hsl(142 76% 45% / 0.5);
+  }
+
+  .bg-fire-gradient {
+    background: linear-gradient(135deg, hsl(142 70% 55%) 0%, hsl(142 76% 45%) 50%, hsl(142 80% 30%) 100%);
+  }
+
+  .bg-ember-gradient {
+    background: linear-gradient(180deg, hsl(160 84% 39%) 0%, hsl(0 0% 5%) 100%);
+  }
+
+  .bg-steel-gradient {
+    background: linear-gradient(180deg, hsl(0 0% 12%) 0%, hsl(0 0% 5%) 100%);
+  }
+
+  /* Glow animation */
+  @keyframes flame-flicker {
+    0%, 100% { 
+      text-shadow: 0 0 20px hsl(142 76% 45% / 0.8), 0 0 40px hsl(160 84% 39% / 0.4);
+    }
+    50% { 
+      text-shadow: 0 0 30px hsl(142 70% 55% / 0.9), 0 0 60px hsl(142 76% 45% / 0.5);
+    }
+  }
+
+  .animate-flame {
+    animation: flame-flicker 2s ease-in-out infinite;
+  }
+
+  /* Glow effect */
+  .glow-fire {
+    box-shadow: 0 0 20px hsl(142 76% 45% / 0.4), 0 0 40px hsl(160 84% 39% / 0.2);
+  }
+
+  .glow-fire-hover:hover {
+    box-shadow: 0 0 30px hsl(142 76% 45% / 0.6), 0 0 60px hsl(160 84% 39% / 0.3);
+  }
+
+  /* Industrial texture overlay */
+  .texture-industrial {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  /* Post flame style - now green */
+  .post-flame {
+    position: relative;
+    padding: 1rem;
+    background: linear-gradient(135deg, hsl(142 76% 45% / 0.15) 0%, hsl(160 84% 39% / 0.1) 100%);
+    border-left: 3px solid hsl(142 76% 45%);
+    border-radius: 0.5rem;
+  }
+
+  .post-flame::before {
+    content: '⚡';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    font-size: 1.25rem;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(0 0% 8%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(0 0% 22%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(142 76% 45%);
+}
+
+/* Selection */
+::selection {
+  background: hsl(142 76% 45% / 0.3);
+  color: hsl(0 0% 100%);
+}
